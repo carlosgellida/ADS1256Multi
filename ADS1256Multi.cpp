@@ -15,13 +15,13 @@ ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
 	volatile uint8_t * PINDEX_DRDY =  (uint8_t *) PB1 ; 
 	volatile uint8_t * DDR_DRDY =  (uint8_t *) DDRB ; 
 
-	volatile uint8_t * *PORT_CS =  (uint8_t *) PORTB ;// Pin 10 on Arduino UNO
-	volatile uint8_t * *PIN_CS =  (uint8_t *) PINB ;
+	volatile uint8_t * PORT_CS =  (uint8_t *) PORTB ;// Pin 10 on Arduino UNO
+	volatile uint8_t * PIN_CS =  (uint8_t *) PINB ;
 	volatile uint8_t * PINDEX_CS =  (uint8_t *) PB2;
 	volatile uint8_t * DDR_CS =  (uint8_t *) DDRB ;
 
-	volatile uint8_t * *PORT_RESET =  (uint8_t *) PORTB ;// PIN 8 on Arduino UNO
-	volatile uint8_t * *PIN_REST =  (uint8_t *) PINB ;
+	volatile uint8_t * PORT_RESET =  (uint8_t *) PORTB ;// PIN 8 on Arduino UNO
+	volatile uint8_t * PIN_REST =  (uint8_t *) PINB ;
 	volatile uint8_t * PINDEX_RESET =  (uint8_t *) PB0 ;
 	volatile uint8_t * DDR_RESET =  (uint8_t *)DDRB ; 
 
