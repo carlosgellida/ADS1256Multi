@@ -238,14 +238,14 @@ void ADS1256::begin(unsigned char drate, unsigned char gain, bool buffenable) {
 }
 
 void ADS1256::CSON() {
-  *PORT_CS &= ~(1 << *PINDEX_CS);
+  *PORT_CS &= ~(1 << PINDEX_CS);
 }  // digitalWrite(_CS, LOW); }
 
 void ADS1256::CSOFF() {
-  *PORT_CS |= (1 << *PINDEX_CS);
+  *PORT_CS |= (1 << PINDEX_CS);
 }  // digitalWrite(_CS, HIGH); }
 
 void ADS1256::waitDRDY() {
-  while (*PIN_DRDY & (1 << *PINDEX_DRDY))
+  while (*PIN_DRDY & (1 << PINDEX_DRDY))
     ;
 }
