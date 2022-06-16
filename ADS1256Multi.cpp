@@ -10,31 +10,31 @@
 
 ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
 
-  auto *PORT_DRDY = PORTB ;// Pin 9 on Arduino UNO
-	auto *PIN_DRDY = PINB ;
-	auto PINDEX_DRDY = PB1 ; 
-	auto DDR_DRDY = DDRB ; 
+  volatile uint8_t * PORT_DRDY = (uint8_t *) PORTB ;// Pin 9 on Arduino UNO
+	volatile uint8_t * PIN_DRDY =  (uint8_t *) PINB ;
+	volatile uint8_t * PINDEX_DRDY =  (uint8_t *) PB1 ; 
+	volatile uint8_t * DDR_DRDY =  (uint8_t *) DDRB ; 
 
-	auto *PORT_CS = PORTB ;// Pin 10 on Arduino UNO
-	auto *PIN_CS = PINB ;
-	auto PINDEX_CS = PB2;
-	auto DDR_CS = DDRB ;
+	volatile uint8_t * *PORT_CS =  (uint8_t *) PORTB ;// Pin 10 on Arduino UNO
+	volatile uint8_t * *PIN_CS =  (uint8_t *) PINB ;
+	volatile uint8_t * PINDEX_CS =  (uint8_t *) PB2;
+	volatile uint8_t * DDR_CS =  (uint8_t *) DDRB ;
 
-	auto *PORT_RESET = PORTB ;// PIN 8 on Arduino UNO
-	auto *PIN_REST = PINB ;
-	auto PINDEX_RESET = PB0 ;
-	auto DDR_RESET = DDRB ; 
+	volatile uint8_t * *PORT_RESET =  (uint8_t *) PORTB ;// PIN 8 on Arduino UNO
+	volatile uint8_t * *PIN_REST =  (uint8_t *) PINB ;
+	volatile uint8_t * PINDEX_RESET =  (uint8_t *) PB0 ;
+	volatile uint8_t * DDR_RESET =  (uint8_t *)DDRB ; 
 
   // Set DRDY as input
-  *DDR_DRDY &= ~(1 << PINDEX_DRDY);
+  *DDR_DRDY &= ~(1 << *PINDEX_DRDY);
   // Set CS as output
-  *DDR_CS |= (1 << PINDEX_CS);
+  *DDR_CS |= (1 << *PINDEX_CS);
 
   if (useResetPin) {
     // set RESETPIN as output
-    *DDR_RESET |= (1 << PINDEX_RESET);
+    *DDR_RESET |= (1 << *PINDEX_RESET);
     // pull RESETPIN high
-    *PORT_RESET |= (1 << PINDEX_RESET);
+    *PORT_RESET |= (1 << *PINDEX_RESET);
   }
 
   // Voltage Reference
@@ -238,14 +238,14 @@ void ADS1256::begin(unsigned char drate, unsigned char gain, bool buffenable) {
 }
 
 void ADS1256::CSON() {
-  PORT_CS &= ~(1 << PINDEX_CS);
+  *PORT_CS &= ~(1 << *PINDEX_CS);
 }  // digitalWrite(_CS, LOW); }
 
 void ADS1256::CSOFF() {
-  PORT_CS |= (1 << PINDEX_CS);
+  *PORT_CS |= (1 << *PINDEX_CS);
 }  // digitalWrite(_CS, HIGH); }
 
 void ADS1256::waitDRDY() {
-  while (PIN_DRDY & (1 << PINDEX_DRDY))
+  while (*PIN_DRDY & (1 << *PINDEX_DRDY))
     ;
 }
