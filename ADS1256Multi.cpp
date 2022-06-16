@@ -10,31 +10,31 @@
 
 ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
 
-  char PORT_DRDY = PORTB ;// Pin 9 on Arduino UNO
-	char PIN_DRDY = PINB ;
-	char PINDEX_DRDY = PB1 ; 
-	char DDR_DRDY = DDRB ; 
+  auto *PORT_DRDY = PORTB ;// Pin 9 on Arduino UNO
+	auto *PIN_DRDY = PINB ;
+	auto PINDEX_DRDY = PB1 ; 
+	auto DDR_DRDY = DDRB ; 
 
-	char PORT_CS = PORTB ;// Pin 10 on Arduino UNO
-	char PIN_CS = PINB ;
-	char PINDEX_CS = PB2;
-	char DDR_CS = DDRB ;
+	auto *PORT_CS = PORTB ;// Pin 10 on Arduino UNO
+	auto *PIN_CS = PINB ;
+	auto PINDEX_CS = PB2;
+	auto DDR_CS = DDRB ;
 
-	char PORT_RESET = PORTB ;// PIN 8 on Arduino UNO
-	char PIN_REST = PINB ;
-	char PINDEX_RESET = PB0 ;
-	char DDR_RESET = DDRB ; 
+	auto *PORT_RESET = PORTB ;// PIN 8 on Arduino UNO
+	auto *PIN_REST = PINB ;
+	auto PINDEX_RESET = PB0 ;
+	auto DDR_RESET = DDRB ; 
 
   // Set DRDY as input
-  DDR_DRDY &= ~(1 << PINDEX_DRDY);
+  *DDR_DRDY &= ~(1 << PINDEX_DRDY);
   // Set CS as output
-  DDR_CS |= (1 << PINDEX_CS);
+  *DDR_CS |= (1 << PINDEX_CS);
 
   if (useResetPin) {
     // set RESETPIN as output
-    DDR_RESET |= (1 << PINDEX_RESET);
+    *DDR_RESET |= (1 << PINDEX_RESET);
     // pull RESETPIN high
-    PORT_RESET |= (1 << PINDEX_RESET);
+    *PORT_RESET |= (1 << PINDEX_RESET);
   }
 
   // Voltage Reference
@@ -238,14 +238,14 @@ void ADS1256::begin(unsigned char drate, unsigned char gain, bool buffenable) {
 }
 
 void ADS1256::CSON() {
-  this->PORT_CS &= ~(1 << this->PINDEX_CS);
+  PORT_CS &= ~(1 << PINDEX_CS);
 }  // digitalWrite(_CS, LOW); }
 
 void ADS1256::CSOFF() {
-  this->PORT_CS |= (1 << this->PINDEX_CS);
+  PORT_CS |= (1 << PINDEX_CS);
 }  // digitalWrite(_CS, HIGH); }
 
 void ADS1256::waitDRDY() {
-  while (this->PIN_DRDY & (1 << this->PINDEX_DRDY))
+  while (PIN_DRDY & (1 << PINDEX_DRDY))
     ;
 }
