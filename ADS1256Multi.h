@@ -10,7 +10,7 @@
 #ifndef ADS1256_h
 #define ADS1256_h
 
-/*#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168__)
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168__)
 	// Define PORT
 	#define PORT_DRDY PORTB // Pin 9 on Arduino UNO
 	#define PIN_DRDY PINB
@@ -51,7 +51,7 @@
 #else 
 	// Contributions are welcome
 	#error "Oops! Your board architecture is not supported yet'"
-#endif */
+#endif 
 
 // ADS1256 Register
 #define STATUS 0x00
@@ -141,6 +141,21 @@
 
 class ADS1256 {
  public:
+  char PORT_DRDY ;// Pin 9 on Arduino UNO
+  char PIN_DRDY  ;
+  char PINDEX_DRDY ; 
+  char DDR_DRDY ; 
+
+  char PORT_CS ;// Pin 10 on Arduino UNO
+  char PIN_CS ;
+  char PINDEX_CS ;
+  char DDR_CS  ;
+
+  char PORT_RESET  ;// PIN 8 on Arduino UNO
+  char PIN_REST ;
+  char PINDEX_RESET ;
+  char DDR_RESET ; 
+
   ADS1256(float clockspdMhz, float vref, bool useresetpin);
   void writeRegister(unsigned char reg, unsigned char wdata);
   unsigned char readRegister(unsigned char reg);
