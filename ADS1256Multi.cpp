@@ -4,7 +4,7 @@
 		Modfified  Jan 2019 by Axel Sepulveda for ATMEGA328
 */
 
-#include "ADS1256.h"
+#include "ADS1256Multi.h"
 #include "Arduino.h"
 #include "SPI.h"
 
