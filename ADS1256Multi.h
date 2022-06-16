@@ -4,10 +4,13 @@
 	Modifified  Jan 2019 by Axel Sepulveda for ATMEGA328
 */
 
+// ADSA: DRDY->9, CS->10 
+// ADSB: DRDY->7, CS->6
+
 #ifndef ADS1256_h
 #define ADS1256_h
 
-#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168__)
+/*#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168__)
 	// Define PORT
 	#define PORT_DRDY PORTB // Pin 9 on Arduino UNO
 	#define PIN_DRDY PINB
@@ -48,7 +51,8 @@
 #else 
 	// Contributions are welcome
 	#error "Oops! Your board architecture is not supported yet'"
-#endif
+#endif */
+
 // ADS1256 Register
 #define STATUS 0x00
 #define MUX 0x01

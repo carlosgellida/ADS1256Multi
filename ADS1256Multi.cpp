@@ -9,6 +9,22 @@
 #include "SPI.h"
 
 ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
+
+  char PORT_DRDY = PORTB ;// Pin 9 on Arduino UNO
+	char PIN_DRDY = PINB ;
+	char PINDEX_DRDY = PB1 ; 
+	char DDR_DRDY = DDRB ; 
+
+	char PORT_CS = PORTB ;// Pin 10 on Arduino UNO
+	char PIN_CS = PINB ;
+	char PINDEX_CS = PB2;
+	char DDR_CS = DDRB ;
+
+	char PORT_RESET = PORTB ;// PIN 8 on Arduino UNO
+	char PIN_REST = PINB ;
+	char PINDEX_RESET = PB0 ;
+	char DDR_RESET = DDRB ; 
+
   // Set DRDY as input
   DDR_DRDY &= ~(1 << PINDEX_DRDY);
   // Set CS as output
@@ -222,14 +238,14 @@ void ADS1256::begin(unsigned char drate, unsigned char gain, bool buffenable) {
 }
 
 void ADS1256::CSON() {
-  PORT_CS &= ~(1 << PINDEX_CS);
+  this->PORT_CS &= ~(1 << this->PINDEX_CS);
 }  // digitalWrite(_CS, LOW); }
 
 void ADS1256::CSOFF() {
-  PORT_CS |= (1 << PINDEX_CS);
+  this->PORT_CS |= (1 << this->PINDEX_CS);
 }  // digitalWrite(_CS, HIGH); }
 
 void ADS1256::waitDRDY() {
-  while (PIN_DRDY & (1 << PINDEX_DRDY))
+  while (this->PIN_DRDY & (1 << this->PINDEX_DRDY))
     ;
 }
