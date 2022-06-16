@@ -141,20 +141,20 @@
 
 class ADS1256 {
  public:
-  char PORT_DRDY ;// Pin 9 on Arduino UNO
-  char PIN_DRDY  ;
-  char PINDEX_DRDY ; 
-  char DDR_DRDY ; 
+  volatile uint8_t * PORT_DRDY ;// Pin 9 on Arduino UNO
+  volatile uint8_t * PIN_DRDY  ;
+  volatile uint8_t * PINDEX_DRDY ; 
+  volatile uint8_t * DDR_DRDY ; 
 
-  char PORT_CS ;// Pin 10 on Arduino UNO
-  char PIN_CS ;
-  char PINDEX_CS ;
-  char DDR_CS  ;
+  volatile uint8_t * PORT_CS ;// Pin 10 on Arduino UNO
+  volatile uint8_t * PIN_CS ;
+  volatile uint8_t * PINDEX_CS ;
+  volatile uint8_t * DDR_CS  ;
 
-  char PORT_RESET  ;// PIN 8 on Arduino UNO
-  char PIN_REST ;
-  char PINDEX_RESET ;
-  char DDR_RESET ; 
+  volatile uint8_t * PORT_RESET  ;// PIN 8 on Arduino UNO
+  volatile uint8_t * PIN_REST ;
+  volatile uint8_t * PINDEX_RESET ;
+  volatile uint8_t * DDR_RESET ; 
 
   ADS1256(float clockspdMhz, float vref, bool useresetpin);
   void writeRegister(unsigned char reg, unsigned char wdata);
