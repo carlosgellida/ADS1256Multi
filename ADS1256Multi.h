@@ -142,7 +142,7 @@
 class ADS1256 {
  public:
   char *PORT_DRDY ;// Pin 9 on Arduino UNO
-  char *PIN_DRDY  ;
+  volatile char *PIN_DRDY  ;
   char PINDEX_DRDY ; 
   char *DDR_DRDY ; 
 
