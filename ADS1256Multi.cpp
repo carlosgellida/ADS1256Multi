@@ -16,7 +16,7 @@ ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
 	char *DDR_DRDY =  (char *) DDRB ; 
 
 	char *PORT_CS =  (char *) PORTB ;// Pin 10 on Arduino UNO
-	char *PIN_CS =  (char *) PINB ;
+	volatile char *PIN_CS =  (char *) PINB ;
 	char PINDEX_CS = PB2;
 	char *DDR_CS =  (char *) DDRB ;
 
