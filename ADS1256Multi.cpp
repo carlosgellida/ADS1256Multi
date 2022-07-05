@@ -4,26 +4,26 @@
 		Modfified  Jan 2019 by Axel Sepulveda for ATMEGA328
 */
 
-#include "ADS1256Multi2.h"
+#include "ADS1256Multi.h"
 #include "Arduino.h"
 #include "SPI.h"
 
 ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
 
-  volatile uint8_t * PORT_DRDY = &PORTB ;// Pin 9 on Arduino UNO
-	volatile uint8_t * PIN_DRDY =  &PINB ;
+  const char *PORT_DRDY = (char *) PORTB ;// Pin 9 on Arduino UNO
+	const char *PIN_DRDY =  (char *) PINB ;
 	char PINDEX_DRDY = PB1 ; 
-	volatile uint8_t * DDR_DRDY =  &DDRB ; 
+	const char *DDR_DRDY =  (char *) DDRB ; 
 
-	volatile uint8_t * PORT_CS =  &PORTB ;// Pin 10 on Arduino UNO
-	volatile uint8_t * PIN_CS =  &PINB ;
+	const char * PORT_CS =  (char *) PORTB ;// Pin 10 on Arduino UNO
+	const char * PIN_CS =  (char *) PINB ;
 	char PINDEX_CS = PB2;
-	volatile uint8_t * DDR_CS =  &DDRB ;
+	const char * DDR_CS =  (char *) DDRB ;
 
-	volatile uint8_t * PORT_RESET =  &PORTB ;// PIN 8 on Arduino UNO
-	volatile uint8_t * PIN_REST =  &PINB ;
+	const char * PORT_RESET =  (char *) PORTB ;// PIN 8 on Arduino UNO
+	const char * PIN_REST =  (char *) PINB ;
 	char PINDEX_RESET = PB0 ;
-	volatile uint8_t * DDR_RESET =  &DDRB ; 
+	const char * DDR_RESET =  (char *) DDRB ; 
 
   // Set DRDY as input
   *DDR_DRDY &= ~(1 << PINDEX_DRDY);
