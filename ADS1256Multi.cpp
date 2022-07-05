@@ -15,15 +15,15 @@ ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
 	char PINDEX_DRDY = PB1 ; 
 	const char *DDR_DRDY =  (char *) DDRB ; 
 
-	const char * PORT_CS =  (char *) PORTB ;// Pin 10 on Arduino UNO
-	const char * PIN_CS =  (char *) PINB ;
+	const char *PORT_CS =  (char *) PORTB ;// Pin 10 on Arduino UNO
+	const char *PIN_CS =  (char *) PINB ;
 	char PINDEX_CS = PB2;
-	const char * DDR_CS =  (char *) DDRB ;
+	const char *DDR_CS =  (char *) DDRB ;
 
-	const char * PORT_RESET =  (char *) PORTB ;// PIN 8 on Arduino UNO
-	const char * PIN_REST =  (char *) PINB ;
+	const char *PORT_RESET =  (char *) PORTB ;// PIN 8 on Arduino UNO
+	const char *PIN_REST =  (char *) PINB ;
 	char PINDEX_RESET = PB0 ;
-	const char * DDR_RESET =  (char *) DDRB ; 
+	const char *DDR_RESET =  (char *) DDRB ; 
 
   // Set DRDY as input
   *DDR_DRDY &= ~(1 << PINDEX_DRDY);
