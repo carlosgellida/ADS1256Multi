@@ -13,7 +13,7 @@ ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
   char *PORT_DRDY = (char *) PORTB ;// Pin 9 on Arduino UNO
 	volatile char *PIN_DRDY =  (char *) PINB ;
 	char PINDEX_DRDY = PB1 ; 
-	char *DDR_DRDY =  (char *) DDRB ; 
+	char *DDR_DRDY =  (char *) DDRB ;
 
 	char *PORT_CS =  (char *) PORTB ;// Pin 10 on Arduino UNO
 	volatile char *PIN_CS =  (char *) PINB ;
@@ -24,6 +24,11 @@ ADS1256::ADS1256(float clockspdMhz, float vref, bool useResetPin) {
 	char *PIN_REST =  (char *) PINB ;
 	char PINDEX_RESET = PB0 ;
 	char *DDR_RESET =  (char *) DDRB ; 
+ 
+  //No se están asignando valores iniciales para el puntero.
+  *DDR_DRDY = 0x00 ; 
+  *DDR_CS = 0x00 ; 
+  *PIN_CS = 0x00 ; 
 
   // Set DRDY as input
   *DDR_DRDY &= ~(1 << PINDEX_DRDY);
