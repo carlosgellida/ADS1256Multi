@@ -143,17 +143,17 @@ class ADS1256 {
  public:
   volatile uint8_t * PORT_DRDY ;// Pin 9 on Arduino UNO
   volatile uint8_t * PIN_DRDY  ;
-  volatile uint8_t * PINDEX_DRDY ; 
+  char PINDEX_DRDY ; 
   volatile uint8_t * DDR_DRDY ; 
 
   volatile uint8_t * PORT_CS ;// Pin 10 on Arduino UNO
   volatile uint8_t * PIN_CS ;
-  volatile uint8_t * PINDEX_CS ;
+  char PINDEX_CS ;
   volatile uint8_t * DDR_CS  ;
 
   volatile uint8_t * PORT_RESET  ;// PIN 8 on Arduino UNO
   volatile uint8_t * PIN_REST ;
-  volatile uint8_t * PINDEX_RESET ;
+  char PINDEX_RESET ;
   volatile uint8_t * DDR_RESET ; 
 
   ADS1256(float clockspdMhz, float vref, bool useresetpin);
